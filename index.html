@@ -36,7 +36,7 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Barra superiore fissa */
+    /* Barra superiore */
     .top-bar {
       position: fixed;
       top: 20px;
@@ -48,7 +48,7 @@
       align-items: center;
       z-index: 100;
     }
-    /* Logo "Souls": torna alla home al click */
+    /* Logo */
     .logo {
       font-family: 'Quicksand', sans-serif;
       font-size: 2rem;
@@ -100,7 +100,7 @@
       background: #fff;
       border-radius: 50%;
     }
-    /* Menu mobile a scomparsa (senza sfondo nero) */
+    /* Menu mobile a scomparsa */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -130,7 +130,7 @@
     .blur-video {
       filter: blur(5px);
     }
-    /* Contenitore per le sezioni (Home, Chi sono, Contatti) */
+    /* Contenitore per le sezioni */
     .container {
       position: absolute;
       top: 50%;
@@ -159,32 +159,29 @@
       transform: translateX(-50%);
       color: #aaa;
       text-align: center;
+      width: 100%;
     }
     .social-icons {
-      margin-top: 20px;
+      margin: 20px auto;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px; /* spazio tra le icone */
+      gap: 30px;
     }
     .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: #fff;
       font-size: 40px;
+      text-decoration: none; /* Rimuove le linee sottostanti */
       transition: transform 0.5s ease, filter 0.6s ease;
     }
-    /* Stile per l'immagine esterna della nuvoletta */
-    .social-icon-img {
-      width: 40px;
-      height: auto;
-      transition: transform 0.5s ease, filter 0.6s ease;
-      vertical-align: middle;
-    }
-    .social-icon-img:hover,
     .social-icons a:hover {
       filter: brightness(1.3);
       transform: scale(1.1);
     }
-    /* Media query per dispositivi mobili: mostra solo il menu mobile e ridimensiona le icone social */
+    /* Media query per dispositivi mobili */
     @media screen and (max-width: 768px) {
       nav {
         display: none;
@@ -194,9 +191,6 @@
       }
       .social-icons a {
         font-size: 30px;
-      }
-      .social-icon-img {
-        width: 30px;
       }
     }
   </style>
@@ -211,7 +205,7 @@
     </video>
   </div>
 
-  <!-- Barra superiore con logo e menu -->
+  <!-- Barra superiore -->
   <div class="top-bar">
     <h1 class="logo" onclick="showSection('home')">SOULSPILOT</h1>
     <nav>
@@ -235,7 +229,7 @@
     </ul>
   </div>
 
-  <!-- Contenitore per le sezioni -->
+  <!-- Contenitore delle sezioni -->
   <div class="container">
     <!-- Sezione Home -->
     <section id="home" class="active">
@@ -248,7 +242,7 @@
         <li>Mi chiamo Gabriele Paschero</li>
         <li>
           Da sempre affascinato dal mondo radiocomandato, ho trasformato la mia passione per i droni in un’esperienza immersiva.
-          Attraverso il volo, offro prospettive uniche che emozionano e stupiscono
+          Attraverso il volo, offro prospettive uniche che emozionano e stupiscono.
         </li>
       </ul>
     </section>
@@ -261,13 +255,14 @@
     </section>
   </div>
 
-  <!-- Footer con icone social -->
+  <!-- Footer con le icone social (Instagram e YouTube) -->
   <footer>
     <div class="social-icons">
-      <a href="https://www.instagram.com/soulspilot" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@SOULSPILOT" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://bsky.app/profile/soulspilot.bsky.social" target="_blank">
-        <img src="blsk.png" alt="bsky" class="social-icon-img">
+      <a href="https://www.instagram.com/soulspilot" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@SOULSPILOT" target="_blank">
+        <i class="fab fa-youtube"></i>
       </a>
     </div>
     <p>&copy;2025 SOULSPILOT Tutti i diritti riservati.</p>
@@ -278,7 +273,6 @@
     function toggleMobileMenu() {
       const menu = document.getElementById("mobileMenu");
       const videoContainer = document.querySelector(".video-container");
-
       if (menu.style.display === "block") {
         menu.style.display = "none";
         videoContainer.classList.remove("blur-video");
