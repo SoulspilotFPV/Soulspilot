@@ -92,7 +92,7 @@
       gap: 40px;
     }
     nav a {
-      display: inline-block; /* necessario per il transform */
+      display: inline-block;
       text-decoration: none;
       color: #fff;
       font-size: 1.5rem;
@@ -125,7 +125,7 @@
       position: fixed;
       top: 60px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.8);
+      background: transparent;  /* Background rimosso */
       padding: 15px;
       border-radius: 10px;
       z-index: 101;
@@ -174,13 +174,27 @@
     #about, #real-estate, #contact {
       font-size: 1.4rem;
     }
-    /* Stili per dispositivi mobili */
+    /* Media query per dispositivi mobili: adatta il layout, il container e le icone social */
     @media screen and (max-width: 768px) {
       nav {
         display: none;
       }
       .mobile-menu-icon {
         display: flex;
+      }
+      .container {
+        width: 90%;
+        padding: 0 10px;
+        max-width: none;
+      }
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .social-icons a {
+        margin: 0 10px;
+        font-size: 30px;
       }
     }
     /* Footer e icone social */
