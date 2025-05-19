@@ -36,7 +36,7 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Video di sfondo per la sezione Real Estate (viaggio unico nella casa) */
+    /* Video di sfondo per la sezione Real Estate */
     .real-estate-video-container {
       display: none;
       position: fixed;
@@ -125,7 +125,7 @@
       position: fixed;
       top: 60px;
       right: 20px;
-      background: transparent;  /* Non c'è sottofondo */
+      background: transparent;  /* Nessun sottofondo */
       padding: 15px;
       border-radius: 10px;
       z-index: 101;
@@ -138,7 +138,7 @@
       margin: 0;
     }
     .mobile-menu li {
-      margin-bottom: 5px; /* Avvicina le opzioni */
+      margin-bottom: 5px; /* Opzioni più vicine */
     }
     .mobile-menu a {
       display: inline-block;
@@ -146,7 +146,7 @@
       color: #fff;
       font-size: 1.4rem;
       transition: transform 0.5s ease, filter 0.6s ease;
-      -webkit-tap-highlight-color: transparent; /* Rimuove il tap highlight */
+      -webkit-tap-highlight-color: transparent; /* Disabilita tap highlight */
       background: none !important;
     }
     .mobile-menu a:active,
@@ -178,9 +178,8 @@
       opacity: 1;
       transform: scale(1);
     }
-    /* La sezione Real Estate usa il colore di default (bianco) */
+    /* Le sezioni usano il testo bianco (default) */
     #real-estate { }
-    /* Dimensioni testo per desktop */
     #about, #real-estate, #contact {
       font-size: 1.4rem;
     }
@@ -206,7 +205,15 @@
       transform: translateX(-50%);
       color: #aaa;
     }
-    /* Media query per dispositivi mobili */
+    /* Locandina: contenitore per il testo in About e Real Estate */
+    .locandina {
+      /* In desktop la locandina non ha uno stile speciale */
+      background: none;
+      padding: 0;
+      margin: 0;
+      overflow: visible;
+    }
+    /* Media query per dispositivi mobili: adatta layout, riduce testo e crea la locandina */
     @media screen and (max-width: 768px) {
       nav {
         display: none;
@@ -220,14 +227,25 @@
         max-width: none;
         text-align: center;
       }
-      /* Riduci ulteriormente la dimensione del testo nelle sezioni */
+      /* Ulteriore riduzione del testo nelle sezioni */
       .container section {
         font-size: 0.8rem;
       }
       .container h2 {
         font-size: 1.2rem;
       }
-      /* Allinea le icone social al centro con dimensioni ridotte */
+      /* Locandina per About e Real Estate in mobile */
+      .locandina {
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 8px;
+        padding: 10px;
+        max-height: 50vh;
+        overflow-y: auto;
+        margin: 10px auto;
+        width: 95%;
+        font-size: 0.8rem;
+      }
+      /* Icone social centrate e ridotte */
       .social-icons {
         display: flex;
         justify-content: center;
@@ -269,7 +287,7 @@
     </video>
   </div>
 
-  <!-- Video di sfondo per la sezione Real Estate (viaggio unico nella casa) -->
+  <!-- Video di sfondo per la sezione Real Estate -->
   <div class="real-estate-video-container">
     <video autoplay loop muted playsinline>
       <source src="video1.mp4" type="video/mp4">
@@ -313,21 +331,26 @@
     <!-- Sezione Chi Sono -->
     <section id="about">
       <h2>Chi Sono</h2>
-      <ul style="list-style-type: none; padding: 0;">
-        <li>Mi chiamo Gabriele Paschero</li>
-        <li>Da sempre affascinato dal mondo radiocomandato, ho trasformato la mia passione per i droni in un’esperienza immersiva. Attraverso il volo, offro prospettive uniche che emozionano e stupiscono.</li>
-      </ul>
+      <!-- Locandina per mobile: contiene il testo -->
+      <div class="locandina">
+        <ul style="list-style-type: none; padding: 0;">
+          <li>Mi chiamo Gabriele Paschero</li>
+          <li>Da sempre affascinato dal mondo radiocomandato, ho trasformato la mia passione per i droni in un’esperienza immersiva. Attraverso il volo, offro prospettive uniche che emozionano e stupiscono.</li>
+        </ul>
+      </div>
     </section>
 
     <!-- Sezione Real Estate -->
     <section id="real-estate">
       <h2>Real Estate</h2>
-      <p>
-        Scopri "Real Estate": un’esperienza esclusiva che trasforma la presentazione di ogni proprietà. Utilizzando droni FPV e un innovativo storytelling visivo, offriamo un tour immersivo in cui il video ti accompagna passo dopo passo in ogni angolo della casa, valorizzando ogni ambiente come se il cliente si trovasse realmente sul posto.
-      </p>
-      <p>
-        Un video dinamico, a schermo intero, che ti immerge in un viaggio emozionale attraverso ogni dettaglio, elevando l’immagine della tua agenzia e trasformando ogni visita in un’esperienza indimenticabile.
-      </p>
+      <div class="locandina">
+        <p>
+          Scopri "Real Estate": un’esperienza esclusiva che trasforma la presentazione di ogni proprietà. Utilizzando droni FPV e un innovativo storytelling visivo, offriamo un tour immersivo in cui il video ti accompagna passo dopo passo in ogni angolo della casa, valorizzando ogni ambiente come se il cliente si trovasse realmente sul posto.
+        </p>
+        <p>
+          Un video dinamico, a schermo intero, che ti immerge in un viaggio emozionale attraverso ogni dettaglio, elevando l’immagine della tua agenzia e trasformando ogni visita in un’esperienza indimenticabile.
+        </p>
+      </div>
     </section>
 
     <!-- Sezione Contatti -->
@@ -353,7 +376,7 @@
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById("mobileMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
 
     function showSection(sectionId) {
@@ -373,7 +396,7 @@
         document.querySelector('.video-container').style.display = "block";
       }
 
-      // Imposta il blur sul video visibile in base alla sezione attiva
+      // Imposta il blur sul video visibile
       if (sectionId === "home") {
         document.querySelector('.video-container').classList.remove("blur-video");
         document.querySelector('.real-estate-video-container').classList.remove("blur-video");
