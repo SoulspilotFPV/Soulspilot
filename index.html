@@ -125,11 +125,12 @@
       position: fixed;
       top: 60px;
       right: 20px;
-      background: transparent;  /* Background rimosso */
+      background: transparent;  /* Sotto-fondo rimosso */
       padding: 15px;
       border-radius: 10px;
       z-index: 101;
       transition: opacity 0.3s ease;
+      text-align: center;
     }
     .mobile-menu ul {
       list-style: none;
@@ -166,38 +167,13 @@
       opacity: 1;
       transform: scale(1);
     }
-    /* Specifico per la sezione Real Estate: lascia il testo bianco (default) */
-    #real-estate {
-      /* Nessuna colorazione qui, così il testo rimane bianco */
-    }
-    /* Aumenta la dimensione dei caratteri per le sezioni About, Real Estate e Contatti */
+    /* Non imposto un colore specifico per la sezione Real Estate: il testo rimane bianco (default) */
+    #real-estate { }
+    /* Aumenta la dimensione dei caratteri per le sezioni About, Real Estate e Contatti (desktop) */
     #about, #real-estate, #contact {
       font-size: 1.4rem;
     }
-    /* Media query per dispositivi mobili: adatta il layout, il container e le icone social */
-    @media screen and (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .mobile-menu-icon {
-        display: flex;
-      }
-      .container {
-        width: 90%;
-        padding: 0 10px;
-        max-width: none;
-      }
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      .social-icons a {
-        margin: 0 10px;
-        font-size: 30px;
-      }
-    }
-    /* Footer e icone social */
+    /* Footer e icone social (desktop) */
     .social-icons {
       margin-top: 20px;
     }
@@ -218,6 +194,45 @@
       left: 50%;
       transform: translateX(-50%);
       color: #aaa;
+    }
+    /* Media query per dispositivi mobili: adatta il layout, centra il testo e riduce le dimensioni */
+    @media screen and (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .mobile-menu-icon {
+        display: flex;
+      }
+      .container {
+        width: 90%;
+        padding: 0 10px;
+        max-width: none;
+        text-align: center;
+      }
+      .container section {
+        font-size: 1rem; /* testo ridotto */
+      }
+      .container h2 {
+        font-size: 1.5rem;
+      }
+      /* Allinea le icone social al centro e ridimensiona */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      .social-icons a {
+        margin: 0 5px;
+        font-size: 25px;
+      }
+      /* Menu mobile: centra il testo */
+      .mobile-menu ul {
+        text-align: center;
+      }
+      .mobile-menu li {
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -304,8 +319,12 @@
   <!-- Footer con icone social -->
   <footer>
     <div class="social-icons">
-      <a href="https://www.instagram.com/soulspilot" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@SOULSPILOT" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/soulspilot" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@SOULSPILOT" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
       <a href="https://bsky.app/profile/soulspilot.bsky.social" target="_blank">
         <i class="fa-solid fa-cloud"></i>
       </a>
@@ -317,11 +336,7 @@
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById("mobileMenu");
-      if (menu.style.display === "block") {
-        menu.style.display = "none";
-      } else {
-        menu.style.display = "block";
-      }
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
 
     function showSection(sectionId) {
