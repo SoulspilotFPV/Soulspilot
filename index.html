@@ -179,17 +179,17 @@
       opacity: 1;
       transform: scale(1);
     }
-    /* Stile "Locandina" per About e Real Estate (ADESSO ANCHE PER DESKTOP) */
+    /* Stile "Locandina" per About e Real Estate */
     .locandina {
       background: rgba(0, 0, 0, 0.75); /* Sfondo semi-trasparente */
       border-radius: 8px;
       padding: 25px;
-      margin: 20px auto 0 auto; /* Margine superiore, 0 per i lati se il container gestisce la larghezza */
+      margin: 20px auto 0 auto;
       max-height: 65vh; /* Altezza massima, poi scroll */
       overflow-y: auto;
       text-align: left; /* Testo allineato a sinistra di default dentro la locandina */
       font-size: 1.1rem; /* Font-size per testo dentro la locandina desktop */
-      width: 100%; /* Occupa la larghezza del .container */
+      width: 100%;
     }
     .locandina p,
     .locandina li {
@@ -197,13 +197,16 @@
       line-height: 1.6;
     }
     .locandina ul {
-      padding-left: 20px; /* Indentazione per le liste */
+      padding-left: 20px; /* Indentazione per le liste con markers */
       list-style-position: outside;
     }
-    .locandina ul li strong {
-      color: #ffffff; /* Evidenzia i titoli dei benefici */
+    #about .locandina ul { /* Rimuove padding per la lista specifica di #about che non ha markers */
+        padding-left: 0;
     }
-    .locandina a { /* Stile per i link dentro la locandina */
+    .locandina ul li strong {
+      color: #ffffff;
+    }
+    .locandina a {
         color: #ffcc00;
         font-weight: bold;
         text-decoration: none;
@@ -244,30 +247,35 @@
       }
       .container {
         width: 90%;
-        padding: 0 10px; /* Padding laterale per il container su mobile */
+        padding: 0 10px;
       }
       .container section {
-        font-size: 1rem; /* Font-size base per il testo nelle sezioni mobile */
+        font-size: 1rem;
         transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
       }
-      .container h2 { /* Titoli di sezione H2 su mobile */
+      .container h2 {
         font-size: 1.3rem;
       }
       /* Adattamenti per la locandina su mobile */
       .locandina {
         padding: 15px;
-        max-height: 60vh; /* Leggermente più spazio su mobile se necessario */
-        font-size: 0.9rem; /* Font-size specifico per testo dentro locandina mobile */
-        width: 100%; /* Occupa la larghezza del .container (che ha padding) */
+        max-height: 60vh;
+        font-size: 0.9rem;
+        width: 100%;
       }
        .locandina p,
       .locandina li {
-        font-size: 0.9rem; /* Consistenza font */
+        font-size: 0.9rem;
         line-height: 1.5;
       }
-      .locandina ul {
-        padding-left: 20px !important; /* Assicura padding per liste */
+      /* Non serve .locandina ul specifico qui se #about .locandina ul gestisce il suo padding a 0 */
+
+      /* MODIFICA: Testo in "Chi Sono" locandina centrato su mobile */
+      #about .locandina {
+        text-align: center;
       }
+      /* #about .locandina ul gestito da stile desktop, padding:0 è già corretto per il centro */
+
       .social-icons {
         display: flex;
         justify-content: center;
@@ -346,7 +354,8 @@
     <section id="about">
       <h2>Chi Sono</h2>
       <div class="locandina">
-        <ul style="list-style-type: none; padding: 0;"> <li>Mi chiamo Gabriele e sono un produttore video specializzato in riprese con droni FPV.</li>
+        <ul style="list-style-type: none; padding: 0;">
+          <li>Mi chiamo Gabriele Paschero e sono un produttore video specializzato in riprese con droni FPV.</li>
           <li style="margin-top: 10px;">La mia passione è catturare l'essenza e la maestosità della natura attraverso esperienze visive immersive. Con il drone, esploro e offro prospettive uniche che mirano a emozionare, stupire e connettere profondamente lo spettatore con il mondo circostante.</li>
         </ul>
       </div>
@@ -357,7 +366,8 @@
       <div class="locandina">
         <p style="text-align: center;">Rivoluziona la presentazione dei tuoi immobili con video FPV immersivi. Con base a Torino, offro un servizio che va oltre la semplice documentazione: creo esperienze visive dinamiche che catturano l'essenza di ogni proprietà, come se il cliente fosse lì, pronto per un acquisto qualificato.</p>
         <p style="text-align: center;">Ecco come i miei tour virtuali possono trasformare il tuo business:</p>
-        <ul style="list-style-type: disc; margin-bottom: 15px;"> <li style="margin-bottom: 8px;"><strong>Ottimizzazione di Tempi e Costi:</strong> Pre-qualifica i clienti e riduci drasticamente le visite a vuoto, dedicando risorse solo agli acquirenti realmente interessati.</li>
+        <ul style="list-style-type: disc; margin-bottom: 15px;">
+          <li style="margin-bottom: 8px;"><strong>Ottimizzazione di Tempi e Costi:</strong> Pre-qualifica i clienti e riduci drasticamente le visite a vuoto, dedicando risorse solo agli acquirenti realmente interessati.</li>
           <li style="margin-bottom: 8px;"><strong>Vendite Accelerate e Margini Migliori:</strong> Attrai un pubblico già convinto, portando a chiusure più rapide e un flusso di cassa più efficiente.</li>
           <li style="margin-bottom: 8px;"><strong>Massima Qualificazione dei Clienti:</strong> Offri un'esplorazione completa e fedele dell'immobile, assicurando che chi ti contatta sia già profondamente interessato.</li>
           <li style="margin-bottom: 8px;"><strong>Differenziazione Competitiva:</strong> Posiziona la tua agenzia come leader innovativo nel mercato, attirando più incarichi e clienti di prestigio.</li>
