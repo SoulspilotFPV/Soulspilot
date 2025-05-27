@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Souls</title>
-  <!-- Import dei font: Quicksand per il logo e Poppins per il resto -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
@@ -118,7 +117,6 @@
       width: 25px;
       height: 2px; /* linee più sottili */
       background: #fff;
-      /* Nessun background aggiunto al click */
       margin: 2px 0;
     }
     /* Menu mobile */
@@ -127,7 +125,7 @@
       position: fixed;
       top: 60px;
       right: 20px;
-      background: transparent;  /* nessun sottofondo */
+      background: transparent;
       padding: 15px;
       border-radius: 10px;
       z-index: 101;
@@ -140,7 +138,7 @@
       margin: 0;
     }
     .mobile-menu li {
-      margin-bottom: 5px; /* opzioni più vicine */
+      margin-bottom: 5px;
     }
     .mobile-menu a {
       display: inline-block;
@@ -167,24 +165,53 @@
       transform: translate(-50%, -50%);
       text-align: center;
       width: 80%;
-      max-width: 600px;
+      max-width: 600px; /* Max larghezza per leggibilità desktop */
     }
     .container section {
       display: none;
       opacity: 0;
       transform: scale(0.95);
       transition: opacity 0.5s ease, transform 0.5s ease;
+      font-size: 1.4rem; /* Font-size base per il testo nelle sezioni desktop */
     }
     .container section.active {
       display: block;
       opacity: 1;
       transform: scale(1);
     }
-    /* Le sezioni usano il testo bianco (default) */
-    #real-estate { }
-    #about, #real-estate, #contact {
-      font-size: 1.4rem;
+    /* Stile "Locandina" per About e Real Estate (ADESSO ANCHE PER DESKTOP) */
+    .locandina {
+      background: rgba(0, 0, 0, 0.75); /* Sfondo semi-trasparente */
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px auto 0 auto; /* Margine superiore, 0 per i lati se il container gestisce la larghezza */
+      max-height: 65vh; /* Altezza massima, poi scroll */
+      overflow-y: auto;
+      text-align: left; /* Testo allineato a sinistra di default dentro la locandina */
+      font-size: 1.1rem; /* Font-size per testo dentro la locandina desktop */
+      width: 100%; /* Occupa la larghezza del .container */
     }
+    .locandina p,
+    .locandina li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .locandina ul {
+      padding-left: 20px; /* Indentazione per le liste */
+      list-style-position: outside;
+    }
+    .locandina ul li strong {
+      color: #ffffff; /* Evidenzia i titoli dei benefici */
+    }
+    .locandina a { /* Stile per i link dentro la locandina */
+        color: #ffcc00;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .locandina a:hover {
+        filter: brightness(1.2);
+    }
+
     /* Footer e icone social (desktop) */
     .social-icons {
       margin-top: 20px;
@@ -207,13 +234,6 @@
       transform: translateX(-50%);
       color: #aaa;
     }
-    /* Locandina: contenitore per il testo nelle sezioni About e Real Estate */
-    .locandina {
-      background: none;
-      padding: 0;
-      margin: 0;
-      overflow: visible;
-    }
     /* Media query per dispositivi mobili */
     @media screen and (max-width: 768px) {
       nav {
@@ -224,30 +244,30 @@
       }
       .container {
         width: 90%;
-        padding: 0 10px;
-        max-width: none;
-        text-align: center;
+        padding: 0 10px; /* Padding laterale per il container su mobile */
       }
-      /* Riduzione del testo nelle sezioni */
       .container section {
-        font-size: 0.8rem;
-        transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* transizione più smooth */
+        font-size: 1rem; /* Font-size base per il testo nelle sezioni mobile */
+        transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
       }
-      .container h2 {
-        font-size: 1.2rem;
+      .container h2 { /* Titoli di sezione H2 su mobile */
+        font-size: 1.3rem;
       }
-      /* Locandina per About e Real Estate in mobile */
+      /* Adattamenti per la locandina su mobile */
       .locandina {
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 8px;
-        padding: 10px;
-        max-height: 50vh;
-        overflow-y: auto;
-        margin: 10px auto;
-        width: 95%;
-        font-size: 0.8rem;
+        padding: 15px;
+        max-height: 60vh; /* Leggermente più spazio su mobile se necessario */
+        font-size: 0.9rem; /* Font-size specifico per testo dentro locandina mobile */
+        width: 100%; /* Occupa la larghezza del .container (che ha padding) */
       }
-      /* Icone social centrate e ridotte */
+       .locandina p,
+      .locandina li {
+        font-size: 0.9rem; /* Consistenza font */
+        line-height: 1.5;
+      }
+      .locandina ul {
+        padding-left: 20px !important; /* Assicura padding per liste */
+      }
       .social-icons {
         display: flex;
         justify-content: center;
@@ -258,7 +278,6 @@
         margin: 0 5px;
         font-size: 25px;
       }
-      /* Menu mobile: centra il testo e riduce lo spazio tra le opzioni */
       .mobile-menu ul {
         text-align: center;
       }
@@ -281,7 +300,6 @@
 </head>
 <body>
 
-  <!-- Video di sfondo globale -->
   <div class="video-container">
     <video autoplay loop muted playsinline>
       <source src="video.mp4" type="video/mp4">
@@ -289,7 +307,6 @@
     </video>
   </div>
 
-  <!-- Video di sfondo per la sezione Real Estate -->
   <div class="real-estate-video-container">
     <video autoplay loop muted playsinline>
       <source src="video1.mp4" type="video/mp4">
@@ -297,7 +314,6 @@
     </video>
   </div>
 
-  <!-- Barra superiore con logo e menu -->
   <div class="top-bar">
     <h1 class="logo" onclick="showSection('home')">SOULSPILOT</h1>
     <nav>
@@ -314,7 +330,6 @@
     </div>
   </div>
 
-  <!-- Menu mobile -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="#" onclick="showSection('about'); toggleMobileMenu()">About</a></li>
@@ -323,38 +338,35 @@
     </ul>
   </div>
 
-  <!-- Contenitore per le sezioni -->
   <div class="container">
-    <!-- Sezione Home -->
     <section id="home" class="active">
       <h2>Welcome!</h2>
     </section>
 
-    <!-- Sezione Chi Sono -->
     <section id="about">
       <h2>Chi Sono</h2>
       <div class="locandina">
-        <ul style="list-style-type: none; padding: 0;">
-          <li>Mi chiamo Gabriele Paschero</li>
-          <li>Da sempre affascinato dal mondo radiocomandato, ho trasformato la mia passione per i droni in un’esperienza immersiva. Attraverso il volo, offro prospettive uniche che emozionano e stupiscono.</li>
+        <ul style="list-style-type: none; padding: 0;"> <li>Mi chiamo Gabriele e sono un produttore video specializzato in riprese con droni FPV.</li>
+          <li style="margin-top: 10px;">La mia passione è catturare l'essenza e la maestosità della natura attraverso esperienze visive immersive. Con il drone, esploro e offro prospettive uniche che mirano a emozionare, stupire e connettere profondamente lo spettatore con il mondo circostante.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Sezione Real Estate -->
     <section id="real-estate">
       <h2>Real Estate</h2>
       <div class="locandina">
-        <p>
-          Scopri "Real Estate": un’esperienza esclusiva che trasforma la presentazione di ogni proprietà. Utilizzando droni FPV e un innovativo storytelling visivo, offriamo un tour immersivo in cui il video ti accompagna passo dopo passo in ogni angolo della casa, valorizzando ogni ambiente come se il cliente si trovasse realmente sul posto.
-        </p>
-        <p>
-          Un video dinamico, a schermo intero, che ti immerge in un viaggio emozionale attraverso ogni dettaglio, elevando l’immagine della tua agenzia e trasformando ogni visita in un’esperienza indimenticabile.
-        </p>
+        <p style="text-align: center;">Rivoluziona la presentazione dei tuoi immobili con video FPV immersivi. Con base a Torino, offro un servizio che va oltre la semplice documentazione: creo esperienze visive dinamiche che catturano l'essenza di ogni proprietà, come se il cliente fosse lì, pronto per un acquisto qualificato.</p>
+        <p style="text-align: center;">Ecco come i miei tour virtuali possono trasformare il tuo business:</p>
+        <ul style="list-style-type: disc; margin-bottom: 15px;"> <li style="margin-bottom: 8px;"><strong>Ottimizzazione di Tempi e Costi:</strong> Pre-qualifica i clienti e riduci drasticamente le visite a vuoto, dedicando risorse solo agli acquirenti realmente interessati.</li>
+          <li style="margin-bottom: 8px;"><strong>Vendite Accelerate e Margini Migliori:</strong> Attrai un pubblico già convinto, portando a chiusure più rapide e un flusso di cassa più efficiente.</li>
+          <li style="margin-bottom: 8px;"><strong>Massima Qualificazione dei Clienti:</strong> Offri un'esplorazione completa e fedele dell'immobile, assicurando che chi ti contatta sia già profondamente interessato.</li>
+          <li style="margin-bottom: 8px;"><strong>Differenziazione Competitiva:</strong> Posiziona la tua agenzia come leader innovativo nel mercato, attirando più incarichi e clienti di prestigio.</li>
+        </ul>
+        <p style="text-align: center;">Ogni video è uno storytelling personalizzato, facilmente integrabile sui tuoi canali digitali e, su richiesta, adattabile a diverse lingue.</p>
+        <p style="text-align: center;">Vuoi vedere come questa tecnologia può valorizzare un immobile? <a href="https://youtu.be/L0n2DT8RP44" target="_blank">Guarda un video dimostrativo.</a></p>
       </div>
     </section>
 
-    <!-- Sezione Contatti -->
     <section id="contact">
       <h2>Contatti</h2>
       <p>📩 Per collaborazioni e business:
@@ -363,7 +375,6 @@
     </section>
   </div>
 
-  <!-- Footer con icone social -->
   <footer>
     <div class="social-icons">
       <a href="https://www.instagram.com/soulspilot" target="_blank">
@@ -376,10 +387,9 @@
         <i class="fa-solid fa-cloud"></i>
       </a>
     </div>
-    <p>&copy;2025 SOULSPILOT. Tutti i diritti riservati.</p>
+    <p>©2025 SOULSPILOT. Tutti i diritti riservati.</p>
   </footer>
 
-  <!-- JavaScript per il menu mobile e la gestione delle sezioni -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById("mobileMenu");
@@ -387,14 +397,12 @@
     }
 
     function showSection(sectionId) {
-      // Nascondi tutte le sezioni
       document.querySelectorAll(".container section").forEach(section => {
         section.classList.remove("active");
         section.style.opacity = "0";
         section.style.transform = "scale(0.95)";
       });
 
-      // Gestione dei video di sfondo in base alla sezione
       if (sectionId === "real-estate") {
         document.querySelector('.video-container').style.display = "none";
         document.querySelector('.real-estate-video-container').style.display = "block";
@@ -403,7 +411,6 @@
         document.querySelector('.video-container').style.display = "block";
       }
 
-      // Imposta il blur sul video visibile
       if (sectionId === "home") {
         document.querySelector('.video-container').classList.remove("blur-video");
         document.querySelector('.real-estate-video-container').classList.remove("blur-video");
@@ -413,7 +420,6 @@
         document.querySelector('.video-container').classList.add("blur-video");
       }
 
-      // Mostra la sezione richiesta dopo un breve ritardo
       setTimeout(() => {
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
