@@ -180,25 +180,23 @@
       transform: scale(1);
     }
 
-    /* NUOVO STILE PER IL TESTO INTRODUTTIVO */
     #home h2.intro-text-souls {
-      font-family: 'Quicksand', sans-serif; /* Come .logo */
-      font-weight: 300;                   /* Come .logo */
-      letter-spacing: 2px;                /* Come .logo */
-      line-height: 1.6;                   /* Regola l'interlinea per due righe */
-      /* La font-size è ereditata/gestita dalle regole esistenti per h2 nelle sezioni */
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 300;
+      letter-spacing: 2px;
+      line-height: 1.6;
     }
 
     /* Stile "Locandina" per About e Real Estate */
     .locandina {
-      background: rgba(0, 0, 0, 0.75); /* Sfondo semi-trasparente */
+      background: rgba(0, 0, 0, 0.75);
       border-radius: 8px;
       padding: 25px;
-      margin: 20px auto 0 auto;
-      max-height: 65vh; /* Altezza massima, poi scroll */
+      margin: 10px auto 0 auto; /* MODIFICATO: Margine superiore ridotto a 10px */
+      max-height: 65vh;
       overflow-y: auto;
-      text-align: left; /* Testo allineato a sinistra di default dentro la locandina */
-      font-size: 1.1rem; /* Font-size per testo dentro la locandina desktop */
+      text-align: left;
+      font-size: 1.1rem;
       width: 100%;
     }
     .locandina p,
@@ -207,7 +205,7 @@
       line-height: 1.6;
     }
     .locandina ul {
-      padding-left: 20px; /* Indentazione per le liste con markers */
+      padding-left: 20px;
       list-style-position: outside;
     }
 
@@ -275,14 +273,14 @@
         padding: 0 10px;
       }
       .container section {
-        font-size: 1rem; /* Questa regola potrebbe influenzare la dimensione base dell'h2 se non specificata */
+        font-size: 1rem;
         transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
       }
-      .container h2 { /* Questa regola influenza l'h2 su mobile */
+      .container h2 {
         font-size: 1.3rem;
       }
       /* Adattamenti per la locandina su mobile */
-      .locandina {
+      .locandina { /* Il margine superiore di 10px si applica anche qui */
         padding: 15px;
         max-height: 60vh;
         font-size: 0.9rem;
