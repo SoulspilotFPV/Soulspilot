@@ -1,339 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOULSPILOT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Poppins:wght@200&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <style>
-    /* Reset base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #000;
-      color: #fff;
-      overflow: hidden;
-      text-align: center;
-    }
-    /* Video di sfondo globale */
-    .video-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: -1;
-      transition: filter 0.5s ease;
-    }
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    /* Video di sfondo per la sezione Real Estate */
-    .real-estate-video-container {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: -1;
-      transition: filter 0.5s ease;
-    }
-    .real-estate-video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    /* Classe per applicare il blur */
-    .blur-video {
-      filter: blur(5px);
-    }
-    /* Barra superiore fissa */
-    .top-bar {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-    }
-    /* Logo */
-    .logo {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 2rem;
-      font-weight: 300;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: transform 0.5s ease;
-      display: inline-block;
-    }
-    .logo:hover {
-      transform: scale(1.1);
-    }
-    /* Menu desktop */
-    nav {
-      margin-left: auto;
-      display: flex;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 40px;
-    }
-    nav a {
-      display: inline-block;
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.5rem;
-      transition: filter 0.6s ease, transform 0.5s ease;
-    }
-    nav a:hover {
-      filter: brightness(1.3);
-      transform: scale(1.1);
-    }
-    /* Menu mobile: icona hamburger composta da 3 linee */
-    .mobile-menu-icon {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      gap: 2px; /* gap ridotto */
-      transition: transform 0.3s ease;
-    }
-    .mobile-menu-icon:hover {
-      transform: scale(1.1);
-    }
-    .mobile-menu-icon div {
-      width: 25px;
-      height: 2px; /* linee più sottili */
-      background: #fff;
-      margin: 2px 0;
-    }
-    /* Menu mobile */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background: transparent;
-      padding: 15px;
-      border-radius: 10px;
-      z-index: 101;
-      transition: opacity 0.3s ease;
-      text-align: center;
-    }
-    .mobile-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .mobile-menu li {
-      margin-bottom: 5px;
-    }
-    .mobile-menu a {
-      display: inline-block;
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.4rem;
-      transition: transform 0.5s ease, filter 0.6s ease;
-      -webkit-tap-highlight-color: transparent;
-      background: none !important;
-    }
-    .mobile-menu a:active,
-    .mobile-menu a:hover,
-    .mobile-menu a:focus {
-      filter: brightness(1.3);
-      transform: scale(1.1);
-      background: none !important;
-      outline: none;
-    }
-    /* Container per le sezioni */
-    .container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 80%;
-      max-width: 600px; /* Max larghezza per leggibilità desktop */
-    }
-    .container section {
-      display: none;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      font-size: 1.4rem; /* Font-size base per il testo nelle sezioni desktop */
-    }
-    .container section.active {
-      display: block;
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    #home h2.intro-text-souls {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 300;
-      letter-spacing: 2px;
-      line-height: 1.6;
-    }
-
-    /* Stile "Locandina" per About e Real Estate */
-    .locandina {
-      background: rgba(0, 0, 0, 0.75);
-      border-radius: 8px;
-      padding: 25px;
-      margin: 10px auto 0 auto; /* MODIFICATO: Margine superiore ridotto a 10px */
-      max-height: 65vh;
-      overflow-y: auto;
-      text-align: left;
-      font-size: 1.1rem;
-      width: 100%;
-    }
-    .locandina p,
-    .locandina li {
-      margin-bottom: 12px;
-      line-height: 1.6;
-    }
-    .locandina ul {
-      padding-left: 20px;
-      list-style-position: outside;
-    }
-
-    #about .locandina {
-        text-align: center;
-    }
-    #about .locandina ul {
-        padding-left: 0;
-    }
-    .locandina ul li strong {
-      color: #ffffff;
-    }
-    .locandina a {
-        color: #ffcc00;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .locandina a:hover {
-        filter: brightness(1.2);
-    }
-
-    /* Footer e icone social (desktop) */
-    .social-icons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      margin: 0 15px;
-      color: #fff;
-      text-decoration: none;
-      transition: transform 0.5s ease, filter 0.6s ease;
-    }
-    .social-icons a i {
-      font-size: 40px;
-    }
-    .social-icons a img {
-      width: 40px;
-      height: 40px;
-    }
-    .social-icons a:hover {
-      filter: brightness(1.3);
-      transform: scale(1.1);
-    }
-    footer {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #aaa;
-    }
-    /* Media query per dispositivi mobili */
-    @media screen and (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .mobile-menu-icon {
-        display: flex;
-      }
-      .container {
-        width: 90%;
-        padding: 0 10px;
-      }
-      .container section {
-        font-size: 1rem;
-        transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
-      }
-      .container h2 {
-        font-size: 1.3rem;
-      }
-      /* Adattamenti per la locandina su mobile */
-      .locandina { /* Il margine superiore di 10px si applica anche qui */
-        padding: 15px;
-        max-height: 60vh; /* Altezza base per locandine generiche su mobile */
-        font-size: 0.9rem;
-        width: 100%;
-      }
-        .locandina p,
-      .locandina li {
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-
-      #real-estate .locandina {
-        text-align: center;
-        max-height: 52vh; /* MODIFICA APPORTATA: Altezza ridotta specificamente per Real Estate su mobile */
-      }
-      #real-estate .locandina ul {
-        list-style-position: inside;
-        padding-left: 0;
-      }
-
-      .social-icons {
-        gap: 10px;
-      }
-      .social-icons a {
-        margin: 0 5px;
-      }
-      .social-icons a i {
-        font-size: 25px;
-      }
-      .social-icons a img {
-        width: 25px;
-        height: 25px;
-      }
-      .mobile-menu ul {
-        text-align: center;
-      }
-      .mobile-menu li {
-        margin-bottom: 5px;
-      }
-      .mobile-menu a {
-        font-size: 1.2rem;
-      }
-      .mobile-menu a:active,
-      .mobile-menu a:hover,
-      .mobile-menu a:focus {
-        filter: brightness(1.3);
-        transform: scale(1.1);
-        background: none !important;
-        outline: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="video-container">
@@ -343,19 +20,13 @@
     </video>
   </div>
 
-  <div class="real-estate-video-container">
-    <video autoplay loop muted playsinline>
-      <source src="video1.mp4" type="video/mp4">
-      Il tuo browser non supporta il video.
-    </video>
-  </div>
+
 
   <div class="top-bar">
     <h1 class="logo" onclick="showSection('home')">SOULSPILOT</h1>
     <nav>
       <ul>
         <li><a href="#" onclick="showSection('about')">About</a></li>
-        <li><a href="#" onclick="showSection('real-estate')">Real Estate</a></li>
         <li><a href="#" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
@@ -369,7 +40,6 @@
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="#" onclick="showSection('about'); toggleMobileMenu()">About</a></li>
-      <li><a href="#" onclick="showSection('real-estate'); toggleMobileMenu()">Real Estate</a></li>
       <li><a href="#" onclick="showSection('contact'); toggleMobileMenu()">Contact</a></li>
     </ul>
   </div>
@@ -380,36 +50,33 @@
     </section>
 
     <section id="about">
-      <h2>Chi Sono</h2>
-      <div class="locandina">
-        <ul style="list-style-type: none; padding: 0;">
-          <li>Mi chiamo Gabriele Paschero e sono un produttore video specializzato in riprese con droni FPV.</li>
-          <li style="margin-top: 10px;">La mia passione è catturare l'essenza e la maestosità della natura attraverso esperienze visive immersive. Con il drone, esploro e offro prospettive uniche che mirano a emozionare, stupire e connettere profondamente lo spettatore con il mondo circostante.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="real-estate">
-      <h2>Real Estate</h2>
-      <div class="locandina">
-        <p>Rivoluziona la presentazione dei tuoi immobili con video FPV immersivi. Con base a Torino, offro un servizio che va oltre la semplice documentazione: creo esperienze visive dinamiche che catturano l'essenza di ogni proprietà, come se il cliente fosse lì, pronto per un acquisto qualificato.</p>
-        <p>Ecco come i miei tour virtuali possono trasformare il tuo business:</p>
-        <ul style="list-style-type: disc; margin-bottom: 15px;">
-          <li style="margin-bottom: 8px;"><strong>Ottimizzazione di Tempi e Costi:</strong> Pre-qualifica i clienti e riduci drasticamente le visite a vuoto, dedicando risorse solo agli acquirenti realmente interessati.</li>
-          <li style="margin-bottom: 8px;"><strong>Vendite Accelerate e Margini Migliori:</strong> Attrai un pubblico già convinto, portando a chiusure più rapide e un flusso di cassa più efficiente.</li>
-          <li style="margin-bottom: 8px;"><strong>Massima Qualificazione dei Clienti:</strong> Offri un'esplorazione completa e fedele dell'immobile, assicurando che chi ti contatta sia già profondamente interessato.</li>
-          <li style="margin-bottom: 8px;"><strong>Differenziazione Competitiva:</strong> Posiziona la tua agenzia come leader innovativo nel mercato, attirando più incarichi e clienti di prestigio.</li>
-        </ul>
-        <p>Ogni video è uno storytelling personalizzato, facilmente integrabile sui tuoi canali digitali e, su richiesta, adattabile a diverse lingue.</p>
-        <p>Vuoi vedere come questa tecnologia può valorizzare un immobile? <a href="https://youtu.be/L0n2DT8RP44" target="_blank">Guarda un video dimostrativo.</a></p>
+      <div class="content-card glass-panel">
+        <h2>Visione</h2>
+        <div class="card-body">
+          <p class="highlight-text">"Vedere il mondo diversamente."</p>
+          <p>Per anni ho creduto che cambiare prospettiva significasse solo salire più in alto. Ho inseguito l'orizzonte
+            con <strong>Soulspilot</strong>, ma ho scoperto che <em>la presenza è l'unica prospettiva che conta</em>.
+          </p>
+          <p>Sono Gabriele, Founder di <strong>AETON</strong>, e non ho smesso di farmi domande.</p>
+          <p><strong>AETON</strong> non è nata in una boardroom, ma nel mio momento più buio. È la risposta al bisogno
+            di un "luogo sicuro" tra una seduta e l'altra, un rifugio digitale nato per trasformare il dolore in
+            consapevolezza e risorsa.</p>
+          <p>Oggi la mia missione è unire questi mondi: l'adrenalina del volo e la pace della presenza, portando la
+            tecnologia a servizio dell'anima.</p>
+          <div class="card-links">
+            <a href="https://aeton.app/website" target="_blank" class="btn-link">Scopri AETON App</a>
+            <a href="https://aeton.space" target="_blank" class="btn-link">Esplora Aeton Space</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <h2>Contatti</h2>
-      <p>📩 Per collaborazioni e business:
-        <a href="mailto:soulspilot00@gmail.com" style="color: #ffcc00; font-weight: bold;">soulspilot00@gmail.com</a>
-      </p>
+      <div class="contact-minimal">
+        <h2>Connettiamoci</h2>
+        <a href="mailto:support@aeton.app" class="contact-email">support@aeton.app</a>
+        <a href="mailto:info@aeton.space" class="contact-email">info@aeton.space</a>
+      </div>
     </section>
   </div>
 
@@ -418,56 +85,12 @@
       <a href="https://www.instagram.com/soulspilot" target="_blank">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="https://www.youtube.com/@SOULSPILOT" target="_blank">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://bsky.app/profile/soulspilot.bsky.social" target="_blank">
-        <img src="Blsk.png" alt="BSKY" />
-      </a>
     </div>
-    <p>©2025 SOULSPILOT. Tutti i diritti riservati.</p>
+    <p>©2025 AETON. Tutti i diritti riservati.</p>
   </footer>
 
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.style.display = (menu.style.display === "block") ? "none" : "block";
-    }
-
-    function showSection(sectionId) {
-      document.querySelectorAll(".container section").forEach(section => {
-        section.classList.remove("active");
-        section.style.opacity = "0";
-        section.style.transform = "scale(0.95)";
-      });
-
-      if (sectionId === "real-estate") {
-        document.querySelector('.video-container').style.display = "none";
-        document.querySelector('.real-estate-video-container').style.display = "block";
-      } else {
-        document.querySelector('.real-estate-video-container').style.display = "none";
-        document.querySelector('.video-container').style.display = "block";
-      }
-
-      if (sectionId === "home") {
-        document.querySelector('.video-container').classList.remove("blur-video");
-        document.querySelector('.real-estate-video-container').classList.remove("blur-video");
-      } else if (sectionId === "real-estate") {
-        document.querySelector('.real-estate-video-container').classList.add("blur-video");
-      } else {
-        document.querySelector('.video-container').classList.add("blur-video");
-      }
-
-      setTimeout(() => {
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-          targetSection.classList.add("active");
-          targetSection.style.opacity = "1";
-          targetSection.style.transform = "scale(1)";
-        }
-      }, 200);
-    }
-  </script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
