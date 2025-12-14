@@ -1,9 +1,9 @@
 function toggleMobileMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("active");
-  
+
   const icon = document.querySelector(".mobile-menu-icon");
-  // Optional: Add some animation to icon if needed, for start just simple toggle
+  icon.classList.toggle("open");
 }
 
 function showSection(sectionId) {
@@ -12,14 +12,14 @@ function showSection(sectionId) {
     section.style.opacity = "0";
     section.style.transform = "scale(0.95)";
   });
-  
+
   // Make sure main video is visible (since we removed the other one)
   document.querySelector('.video-container').style.display = "block";
-  
+
   if (sectionId !== "home") {
-     document.querySelector('.video-container').classList.add("blur-video");
+    document.querySelector('.video-container').classList.add("blur-video");
   } else {
-     document.querySelector('.video-container').classList.remove("blur-video");
+    document.querySelector('.video-container').classList.remove("blur-video");
   }
 
   setTimeout(() => {
