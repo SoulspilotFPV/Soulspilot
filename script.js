@@ -28,6 +28,12 @@ function showSection(sectionId) {
       targetSection.classList.add("active");
       targetSection.style.opacity = "1";
       targetSection.style.transform = "scale(1)";
+
+      // Reset scroll for About section content
+      const contentCard = targetSection.querySelector('.content-card');
+      if (contentCard) {
+        contentCard.scrollTop = 0;
+      }
     }
   }, 200);
 }

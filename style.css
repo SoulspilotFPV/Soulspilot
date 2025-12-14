@@ -240,16 +240,18 @@ nav a:hover {
 
 /* Mobile Menu Icon Animation */
 .mobile-menu-icon div {
-  width: 25px;
+  width: 30px;
+  /* Slightly wider for better X */
   height: 2px;
   background: #fff;
-  margin: 2px 0;
+  margin: 3px 0;
+  /* Clearer spacing */
   transition: all 0.3s ease-in-out;
   transform-origin: center;
 }
 
 .mobile-menu-icon.open div:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
 }
 
 .mobile-menu-icon.open div:nth-child(2) {
@@ -258,7 +260,7 @@ nav a:hover {
 }
 
 .mobile-menu-icon.open div:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 /* Mobile Menu Fullscreen */
