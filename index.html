@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="it">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOULSPILOT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Poppins:wght@200&display=swap"
-    rel="stylesheet">
+  <title>Gabriele Paschero | Creative Developer & AI Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,20 +12,21 @@
 <body>
 
   <div class="video-container">
-    <video autoplay loop muted playsinline>
+    <video autoplay loop muted playsinline id="bgVideo">
       <source src="video.mp4" type="video/mp4">
       Il tuo browser non supporta il video.
     </video>
+    <div class="video-overlay"></div>
   </div>
 
-
-
   <div class="top-bar">
-    <h1 class="logo" onclick="showSection('home')">SOULSPILOT</h1>
+    <h1 class="logo" onclick="showSection('home')">GP</h1>
     <nav>
       <ul>
-        <li><a href="#" onclick="showSection('about')">About</a></li>
-        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        <li><a href="#" onclick="showSection('about')">The Human Factor</a></li>
+        <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+        <li><a href="#" onclick="showSection('tech')">Tech Stack</a></li>
+        <li><a href="#" onclick="showSection('contact')">Connect</a></li>
       </ul>
     </nav>
     <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
@@ -39,61 +38,109 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#" onclick="showSection('about'); toggleMobileMenu()">About</a></li>
-      <li><a href="#" onclick="showSection('contact'); toggleMobileMenu()">Contact</a></li>
+      <li><a href="#" onclick="showSection('about'); toggleMobileMenu()">The Human Factor</a></li>
+      <li><a href="#" onclick="showSection('projects'); toggleMobileMenu()">Projects</a></li>
+      <li><a href="#" onclick="showSection('tech'); toggleMobileMenu()">Tech Stack</a></li>
+      <li><a href="#" onclick="showSection('contact'); toggleMobileMenu()">Connect</a></li>
     </ul>
   </div>
 
   <div class="container">
+    <!-- Hero Section -->
     <section id="home" class="active">
-      <h2 class="intro-text-souls">Immersivo<br>Senza Confini</h2>
+      <h2 class="hero-title">Gabriele Paschero<br><span class="highlight">Ideo, Disegno, Monto.</span></h2>
+      <p class="hero-subtitle">Fusione tra Ingegneria, Design e AI Orchestration.</p>
     </section>
 
+    <!-- Bio Section -->
     <section id="about">
       <div class="content-card glass-panel">
-        <h2>Visione</h2>
+        <h2>The Human Factor</h2>
         <div class="card-body">
-          <p class="highlight-text">"Vedere il mondo diversamente."</p>
-          <p>Ho inseguito a lungo ciò che accadeva intorno a me, ma ho compreso con il tempo che la chiave era ascoltare
-            ciò che accadeva dentro, nel <em>qui ed ora</em>. Questo cambio di prospettiva me lo hanno insegnato i droni
-            FPV, mostrandomi il mondo da un altro punto di vista, e la meditazione, insegnandomi a guardare dentro.</p>
-
-          <p>Sono Gabriele, Founder di <strong>AETON.APP</strong> e <strong>aeton.space</strong> (web design).</p>
-
-          <p>L'app <strong>AETON</strong> è nata dalla consapevolezza del mio periodo più buio. Ho imparato a
-            trasformare il dolore in energia per reagire e fare. Disciplina, creatività, gratitudine, presenza e
-            consapevolezza sono diventati i miei pilastri.</p>
-
-          <p>Oggi la mia missione è aiutare le persone nel proprio percorso con uno strumento che possa dare un supporto
-            reale. Ti invito con gentilezza e curiosità a scoprire il mondo di AETON.</p>
-
-          <p style="font-size: 0.95rem; margin-top: 20px; font-style: italic; opacity: 0.8;">Se vuoi supportare il
-            progetto e hai bisogno di un sito internet, puoi affidarti alla mia agenzia creativa.</p>
-
-          <div class="card-links">
-            <a href="https://aeton.app/website" target="_blank" class="btn-link">Scopri AETON.APP</a>
-            <a href="https://aeton.space" target="_blank" class="btn-link">Visita Aeton.space</a>
+          <p class="intro-bio">Dal processo alla pura creatività.</p>
+          <div class="bio-grid">
+             <div class="bio-item">
+                <h3>4 Anni in E-distribuzione</h3>
+                <p>La base della mia disciplina. Ho gestito processi complessi e infrastrutture critiche, imparando che l'affidabilità è la vera innovazione.</p>
+             </div>
+             <div class="bio-item">
+                <h3>FPV Pilot</h3>
+                <p>Il volo acrobatico mi ha insegnato il "Flow". Decisioni in millisecondi, precisione assoluta e una nuova prospettiva sul mondo.</p>
+             </div>
+             <div class="bio-item">
+                <h3>Creative Developer</h3>
+                <p>Codice come forma d'arte. Unisco la logica ingegneristica alla fluidità del design per creare esperienze digitali che lasciano il segno.</p>
+             </div>
           </div>
+          <p class="bio-conclusion">Oggi porto questa resilienza e precisione nello sviluppo di soluzioni digitali ad alto valore.</p>
         </div>
       </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="content-card glass-panel full-width">
+        <h2>AETON</h2>
+        <p class="project-tagline">Il mio progetto di punta. Nato dal nulla, forgiato dall'esperienza.</p>
+        
+        <div class="workflow-diagram">
+            <div class="step">
+                <i class="fa-solid fa-paintbrush"></i>
+                <span>Design Su Canva</span>
+            </div>
+            <div class="arrow">➔</div>
+             <div class="step">
+                <i class="fa-brands fa-js"></i>
+                <span>Sviluppo Vanilla JS</span>
+            </div>
+            <div class="arrow">➔</div>
+             <div class="step">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Pairing (Antigravity)</span>
+            </div>
+        </div>
+
+        <div class="card-body">
+             <p>Aeton non è solo un'app, è la dimostrazione di come un singolo sviluppatore, potenziato dall'AI, possa costruire un intero ecosistema scalabile.</p>
+             <div class="card-links">
+                <a href="https://aeton.app/website" target="_blank" class="btn-link">Esplora il Caso Studio</a>
+             </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech">
+       <div class="content-card glass-panel">
+        <h2>Competenze</h2>
+        <div class="tech-grid">
+            <div class="tech-item">HTML5</div>
+            <div class="tech-item">CSS3 (Zen)</div>
+            <div class="tech-item">JS (ES6+)</div>
+            <div class="tech-item">PWA</div>
+            <div class="tech-item">Google Antigravity</div>
+            <div class="tech-item">Prompt Engineering</div>
+        </div>
+       </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact">
-      <div class="contact-minimal">
-        <h2>Connettiamoci</h2>
-        <a href="mailto:support@aeton.app" class="contact-email">support@aeton.app</a>
-        <a href="mailto:info@aeton.space" class="contact-email">info@aeton.space</a>
+      <div class="contact-minimal glass-panel">
+        <h2>Professional Connect</h2>
+        <div class="contact-links">
+            <a href="mailto:soulpilot00@gmail.com" class="contact-link"><i class="fa-solid fa-envelope"></i> soulpilot00@gmail.com</a>
+            <a href="https://www.linkedin.com/in/gabriele-paschero" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
+            <a href="https://github.com/MindfulVista" target="_blank" class="contact-link"><i class="fa-brands fa-github"></i> GitHub Repos</a>
+        </div>
       </div>
     </section>
   </div>
 
   <footer>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/soulspilot" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
+    <div class="footer-content">
+      <p>&copy; 2025 Gabriele Paschero. All rights reserved.</p>
     </div>
-    <p>©2025 AETON. Tutti i diritti riservati.</p>
   </footer>
 
   <script src="script.js"></script>
